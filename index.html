@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dworek Białą Dama</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="photos/logo.png">
+    <link rel="apple-touch-icon" href="photos/logo.png">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Styles: public pages -->
+    <link rel="stylesheet" href="style-public.css">
+    <!-- Styles: manager panel (login overlay + dashboard) -->
+    <link rel="stylesheet" href="style-manager.css">
+</head>
+<body>
+
+<!-- ================================================================
+     TOP NAVIGATION
+     ================================================================ -->
+<nav class="top-nav">
+    <div class="nav-container">
+        <div class="nav-logo" onclick="showPage('home')">Biała <span>Dama</span></div>
+        <button class="nav-hamburger" id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div class="nav-menu" id="nav-menu">
+            <button class="nav-link active" data-page="home">Główna</button>
+            <button class="nav-link" data-page="restauracja">Restauracja</button>
+            <button class="nav-link" data-page="hotel">Hotel</button>
+            <button class="nav-link" data-page="okolica">Okolica</button>
+            <button class="nav-link" data-page="vouchery">Vouchery</button>
+            <button class="nav-link" data-page="imprezy">Imprezy &amp; Wesela</button>
+            <button class="nav-link" data-page="kontakt">Kontakt</button>
+            <button class="nav-btn-rezerv" onclick="showPage('rezervacija')">
+                <i class="fas fa-calendar-check"></i> Rezerwacja
+            </button>
+        </div>
+    </div>
+</nav>
+
+
+<!-- ================================================================
+     PAGE: GŁÓWNA (HOME)
+     ================================================================ -->
+<div id="page-home" class="page active">
+
+    <!-- HERO -->
+    <section class="hero-section">
+        <div class="hero-bg"></div>
+        <div class="hero-pattern"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="hero-eyebrow">Odkryj wyjątkowe smaki</span>
+            <h1 class="hero-title">
+                Dworek Biała Dama
+                <strong>Restauracja &amp; Hotel</strong>
+            </h1>
+            <p class="hero-desc">
+                W naszym malowniczo położonym dworku Nieborów poczujesz klimat minionych wieków, a tradycyjny wystrój obiektu z pewnością przypadnie Ci do gustu.
+            </p>
+            <div class="hero-btns">
+                <button class="btn-primary" onclick="showPage('rezervacija')">
+                    <i class="fas fa-calendar-check"></i> Rezerwacja
+                </button>
+                <button class="btn-secondary" onclick="navToRestaurantMenu()">
+                    <i class="fas fa-utensils"></i> Menu
+                </button>
+            </div>
+        </div>
+        <div class="scroll-hint">
+            <span>Przewiń</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- INTRO SECTION -->
+    <div class="home-intro">
+        <div class="intro-text">
+            <span class="section-label">Nasza Historia</span>
+            <h2>Dworek w Nieborowie</h2>
+            <p>
+                Serdecznie witamy Cię na stronie internetowej naszego Dworku „Biała Dama”, który jednocześnie pełni funkcję noclegową. Przygotowaliśmy kompleksową ofertę na którą składa się organizacja wesel i imprez okolicznościowych, a także organizacja szkoleń. 
+            </p>
+            <p>
+                Nasz obiekt zlokalizowany jest na skraju Bolimowskiego Parku Krajobrazowego, dlatego okolica ta ma wiele do zaoferowania osobom, które chciałyby zorganizować wydarzenie w pięknym i klimatycznym miejscu. Mamy nadzieję, że prezentowana oferta przypadnie do gustu i już wkrótce będziemy mogli Cię ugościć w naszym obiekcie. Zachęcamy do zapoznania się z prezentowaną propozycją.
+            </p>
+            <div class="intro-btns">
+                <button class="btn-primary" onclick="showPage('rezervacija')">Zarezerwuj stolik</button>
+                <button class="btn-ghost" onclick="showPage('kontakt')">Poznaj nas</button>
+            </div>
+        </div>
+        <div class="intro-img-wrap">
+            <img src="photos/historia.png" alt="Dworek Biała Dama - Historia">
+        </div>
+    </div>
+
+    <!-- PHOTO DIVIDER 1 -->
+    <div class="photo-divider">
+        <img class="photo-divider-img" src="photos/historia_1.png" alt="Kuchnia">
+        <div class="photo-divider-overlay">
+            <div class="divider-text">
+                <h2>Odkryj naszą historię</h2>
+                <p>Każde danie to historia — opowieść o regionie, o ludziach, którzy uprawiają
+                ziemię, i o pasji naszego zespołu kucharzy. Zapraszamy na niezapomniane
+                doświadczenie kulinarne.</p>
+                <button class="btn-primary" onclick="showPage('okolica')">Odkryj okolicę</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- QUICK CARDS -->
+    <div class="section-container">
+        <div class="section-header">
+            <span class="section-label">Odkryj więcej</span>
+            <h2>Wszystko czego potrzebujesz</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="quick-cards-grid">
+            <div class="quick-card" onclick="showPage('hotel')">
+                <i class="quick-card-icon fas fa-bed"></i>
+                <h3>Hotel</h3>
+                <p>Komfortowe pokoje w otoczeniu przyrody. Nocleg od 195 zł ze śniadaniem.</p>
+            </div>
+            <div class="quick-card" onclick="showPage('restauracja')">
+                <i class="quick-card-icon fas fa-utensils"></i>
+                <h3>Restauracja</h3>
+                <p>Tradycyjne menu z dużym wyborem dań przygotowywanych z lokalnych składników.</p>
+            </div>
+            <div class="quick-card" onclick="showPage('imprezy')">
+                <i class="quick-card-icon fas fa-glass-cheers"></i>
+                <h3>Imprezy &amp; Wesela</h3>
+                <p>Przestronne sale na wesela, bankiety i uroczystości okolicznościowe.</p>
+            </div>
+            <div class="quick-card" onclick="showPage('okolica')">
+                <i class="quick-card-icon fas fa-tree"></i>
+                <h3>Okolica</h3>
+                <p>Około 3 km na północ od Dworku przepływa rzeka Bzura,gdzie jest możliwość zorganizowania niezapomnianych spływów kajakowych</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHOTO DIVIDER 2 -->
+    <div class="photo-divider">
+        <img class="photo-divider-img" src="photos/kariera_1.png" alt="Kariera">
+        <div class="photo-divider-overlay right">
+            <div class="divider-text">
+                <h2>Kariera z pasją</h2>
+                <p>Szukamy ludzi, którzy kochają to co robią. Dołącz do naszego wyjątkowego zespołu.</p>
+                <button class="btn-primary" onclick="showPage('kontakt')">Sprawdź oferty pracy</button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #page-home -->
+
+
+<!-- ================================================================
+     PAGE: RESTAURACJA
+     ================================================================ -->
+<div id="page-restauracja" class="page">
+
+    <!-- Hero -->
+    <div class="page-hero">
+        <img class="page-hero-bg" src="photos/sala-lesna.svg" alt="Restauracja">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="page-hero-inner">
+            <span class="page-hero-label">Smak natury</span>
+            <h1>Złota Kaczka
+                <div class="footer-logo"> <span>Nasza Restauracja</span></div>
+            </h1>
+             
+            <p>Trzy wyjątkowe sale, sezonowe menu i atmosfera, której nie zapomnisz.</p>
+        </div>
+    </div>
+
+    <!-- Tab bar -->
+    <div class="resto-tabs-bar">
+        <button class="resto-tab active" data-tab="sale" onclick="switchRestoTab('sale')">
+            <i class="fas fa-store"></i> Sale &amp; Klimat
+        </button>
+        <button class="resto-tab" data-tab="menu" onclick="switchRestoTab('menu')">
+            <i class="fas fa-utensils"></i> Menu
+        </button>
+        <button class="resto-tab" data-tab="rezerwuj" onclick="switchRestoTab('rezerwuj')">
+            <i class="fas fa-calendar-check"></i> Zarezerwuj Stolik
+        </button>
+    </div>
+
+    <!-- TAB: SALE -->
+    <div id="tab-sale" class="tab-panel active">
+        <div class="section-container">
+            <!-- Takeaway -->
+            <div class="takeaway-bar" onclick="showToast('Zamówienia na wynos: zadzwoń pod +48 600 123 456')">
+                <div class="takeaway-bar-text">
+                    <h3><i class="fas fa-shopping-bag" style="margin-right:12px"></i>Na Wynos</h3>
+                    <p>Zamów nasze dania na wynos — gotowe w 20 minut. Zadzwoń lub zapytaj kelnera.</p>
+                </div>
+                <div class="takeaway-bar-icon"><i class="fas fa-arrow-right"></i></div>
+            </div>
+
+            <div class="section-header">
+                <span class="section-label">Nasze przestrzenie</span>
+                <h2>Trzy wyjątkowe sale</h2>
+                <div class="gold-line"></div>
+                <p>Każda sala ma swój niepowtarzalny charakter i klimat — wybierz tę, która odpowiada Twojemu nastrojowi.</p>
+            </div>
+
+            <div class="halls-grid" id="halls-grid"></div>
+        </div>
+    </div>
+
+    <!-- TAB: MENU -->
+    <div id="tab-menu" class="tab-panel">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">Kuchnia sezonowa</span>
+                <h2>Nasze Menu</h2>
+                <div class="gold-line"></div>
+                <p>Produkty sezonowe od lokalnych dostawców. Menu zmienia się wraz z porami roku.</p>
+            </div>
+            <div id="menu-list"></div>
+        </div>
+    </div>
+
+    <!-- TAB: REZERWUJ -->
+    <div id="tab-rezerwuj" class="tab-panel">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-label">Zarezerwuj</span>
+                <h2>Wybierz swoje miejsce</h2>
+                <div class="gold-line"></div>
+            </div>
+            <div style="background:rgba(197,160,111,0.08);border:1px solid var(--glass-border);border-radius:var(--radius-lg);padding:36px;text-align:center">
+                <i class="fas fa-calendar-alt" style="font-size:3rem;color:var(--accent-color);margin-bottom:18px;display:block"></i>
+                <p style="color:var(--text-light);margin-bottom:22px;font-size:1rem">Pełny proces rezerwacji — wybór sali, stolika, terminu i opcjonalnego zamówienia menu.</p>
+                <button class="btn-primary" onclick="showPage('rezervacija')">
+                    <i class="fas fa-calendar-check"></i> Przejdź do Rezerwacji
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #page-restauracja -->
+
+
+<!-- ================================================================
+     PAGE: REZERWACJA (full flow)
+     ================================================================ -->
+<div id="page-rezervacija" class="page">
+    <div class="rezerv-page">
+
+        <!-- Hero -->
+        <div class="page-hero">
+            <div class="hero-overlay"></div>
+            <div class="hero-pattern"></div>
+            <div class="page-hero-inner">
+                <span class="page-hero-label">Zarezerwuj</span>
+                <h1>Twój Stolik</h1>
+                <p>6 prostych kroków do zarezerwowania wymarzonego miejsca.</p>
+            </div>
+        </div>
+
+        <div class="rezerv-content">
+
+            <!-- ── Countdown timer (30 min to complete reservation) ── -->
+            <div id="res-timer-bar" class="res-timer-bar" style="display:none">
+                <i class="fas fa-clock" style="margin-right:8px;color:var(--accent-color)"></i>
+                Czas na dokończenie rezerwacji: <strong id="res-timer-display">30:00</strong>
+            </div>
+
+            <!-- STEP INDICATOR -->
+            <div class="steps-indicator">
+                <div class="step-dot active" id="sdot-1">1<span class="step-label">Sala</span></div>
+                <div class="step-line"         id="sline-1"></div>
+                <div class="step-dot"          id="sdot-2">2<span class="step-label">Termin</span></div>
+                <div class="step-line"         id="sline-2"></div>
+                <div class="step-dot"          id="sdot-3">3<span class="step-label">Stolik</span></div>
+                <div class="step-line"         id="sline-3"></div>
+                <div class="step-dot"          id="sdot-4">4<span class="step-label">Dane</span></div>
+                <div class="step-line"         id="sline-4"></div>
+                <div class="step-dot"          id="sdot-5">5<span class="step-label">Menu</span></div>
+                <div class="step-line"         id="sline-5"></div>
+                <div class="step-dot"          id="sdot-6">6<span class="step-label">Gotowe</span></div>
+            </div>
+
+            <!-- STEP 1: Wybór sali -->
+            <div class="step-panel active" id="step-1">
+                <h2 class="panel-title">Wybierz Salę</h2>
+                <p class="panel-subtitle">Każda sala oferuje unikalny klimat i atmosferę.</p>
+                <div class="halls-grid" style="margin-bottom:24px">
+                    <div class="hall-card" data-hall="kominkowa" data-hall-name="Sala "Złota Paproć"" onclick="selectHall('kominkowa','Sala Złota Paproć',this)" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s">
+                        <img class="hall-card-img" src="photos/zlota.png" alt="Sala "Złota Paproć"">
+                        <div class="hall-card-info">
+                            <h3>Sala Złota Paproć</h3>
+                            <p>Sala z barem, złotymi dekoracjami i meblami vintage.</p>
+                            <p class="hall-capacity"><i class="fas fa-users"></i> Do 50 osób</p>
+                        </div>
+                    </div>
+                    <div class="hall-card" data-hall="lesna" data-hall-name="Sala Zielona" onclick="selectHall('lesna','Sala Zielona',this)" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s">
+                        <img class="hall-card-img" src="photos/lesna.png" alt="Sala Zielona">
+                        <div class="hall-card-info">
+                            <h3>Sala Zielona</h3>
+                            <p>Kameralna sala z widokiem na pałac. Tylko 4 stoliki.</p>
+                            <p class="hall-capacity"><i class="fas fa-users"></i> Do 16 osób</p>
+                        </div>
+                    </div>
+                    <div class="hall-card" data-hall="taras" data-hall-name="Taras Letni" onclick="selectHall('taras','Taras Letni',this)" style="cursor:pointer;border:2px solid transparent;transition:all 0.3s">
+                        <img class="hall-card-img" src="photos/taras.png" alt="Taras Letni">
+                        <div class="hall-card-info">
+                            <h3>Taras Letni</h3>
+                            <p>Odkryta przestrzeń wśród zieleni.</p>
+                            <p class="hall-capacity"><i class="fas fa-users"></i> Do 20 osób</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="step-nav">
+                    <div></div>
+                    <button class="btn-primary" onclick="nextStep(1)">Dalej <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 2: Termin + Czas trwania -->
+            <div class="step-panel" id="step-2">
+                <h2 class="panel-title">Wybierz Termin</h2>
+                <p class="panel-subtitle">Kiedy chcesz złożyć wizytę? Wybierz datę, godzinę, czas trwania i liczbę gości — stoliki dostępne o tej godzinie zostaną pokazane w następnym kroku.</p>
+                <div class="datetime-row" style="grid-template-columns:1fr 1fr 1fr 1fr">
+                    <div class="form-group">
+                        <label class="form-label">Data</label>
+                        <input type="date" class="form-input" id="res-date">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Godzina przybycia</label>
+                        <select class="form-select" id="res-time">
+                            <option value="">Wybierz godzinę</option>
+                            <option>11:00</option><option>11:15</option><option>11:30</option><option>11:45</option><option>12:00</option><option>12:15</option><option>12:30</option><option>12:45</option><option>13:00</option><option>13:15</option><option>13:30</option><option>13:45</option><option>14:00</option><option>14:15</option><option>14:30</option><option>14:45</option><option>15:00</option><option>15:15</option><option>15:30</option><option>15:45</option><option>16:00</option><option>16:15</option><option>16:30</option><option>16:45</option><option>17:00</option><option>17:15</option><option>17:30</option><option>17:45</option><option>18:00</option><option>18:15</option><option>18:30</option><option>18:45</option><option>19:00</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Czas trwania (godz.)</label>
+                        <select class="form-select" id="res-duration">
+                            <option value="">Ile godzin?</option>
+                            <option value="1">1 godzina</option>
+                            <option value="1.5">1,5 godziny</option>
+                            <option value="2">2 godziny</option>
+                            <option value="2.5">2,5 godziny</option>
+                            <option value="3">3 godziny</option>
+                            <option value="4">4 godziny</option>
+                            <option value="5">5 godzin</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Liczba gości</label>
+                        <select class="form-select" id="res-guests">
+                            <option value="">Ile osób?</option>
+                            <option value="1">1 osoba</option>
+                            <option value="2">2 osoby</option>
+                            <option value="3">3 osoby</option>
+                            <option value="4">4 osoby</option>
+                            <option value="5">5 osób</option>
+                            <option value="6">6 osób</option>
+                            <option value="7">7 osób</option>
+                            <option value="8">8 osób</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="time-info-msg" style="display:none;margin-top:12px;padding:12px 18px;background:rgba(197,160,111,0.10);border-radius:var(--radius-sm);font-size:0.88rem;color:var(--text-light)">
+                    <i class="fas fa-info-circle" style="color:var(--accent-color);margin-right:8px"></i>
+                    <span id="time-info-text"></span>
+                </div>
+                <div class="step-nav">
+                    <button class="btn-ghost" onclick="prevStep(2)"><i class="fas fa-arrow-left"></i> Wstecz</button>
+                    <button class="btn-primary" onclick="nextStep(2)">Pokaż dostępne stoliki <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 3: Wybór stolika (filtrowane wg czasu) -->
+            <div class="step-panel" id="step-3">
+                <h2 class="panel-title">Wybierz Stolik</h2>
+                <p class="panel-subtitle">Zielone stoliki są dostępne w wybranym terminie. Czerwone są zajęte.</p>
+                <div id="availability-banner" style="margin-bottom:16px;padding:12px 18px;background:rgba(197,160,111,0.10);border-radius:var(--radius-sm);font-size:0.9rem;color:var(--text-light)"></div>
+                <div class="floor-map-wrap">
+                    <div class="floor-map" id="floor-map-main"></div>
+                    <div class="map-legend">
+                        <div class="legend-item"><div class="legend-dot free"></div>Wolny</div>
+                        <div class="legend-item"><div class="legend-dot occupied"></div>Zajęty w tym terminie</div>
+                        <div class="legend-item"><div class="legend-dot selected"></div>Wybrany</div>
+                    </div>
+                </div>
+                <div id="selected-table-info" style="display:none;background:rgba(237,137,54,0.10);border:1px solid rgba(237,137,54,0.30);border-radius:var(--radius-sm);padding:14px;text-align:center;color:#7b341e;font-weight:600;margin-bottom:16px"></div>
+                <div class="step-nav">
+                    <button class="btn-ghost" onclick="prevStep(3)"><i class="fas fa-arrow-left"></i> Wstecz</button>
+                    <button class="btn-primary" onclick="nextStep(3)">Dalej <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 4: Dane osobowe -->
+            <div class="step-panel" id="step-4">
+                <h2 class="panel-title">Twoje Dane</h2>
+                <p class="panel-subtitle">Potrzebujemy Twoich danych, by potwierdzić rezerwację.</p>
+                <div class="form-grid" style="margin-bottom:20px">
+                    <div class="form-group">
+                        <label class="form-label">Imię</label>
+                        <input type="text" class="form-input" id="res-fname" placeholder="Imię">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nazwisko</label>
+                        <input type="text" class="form-input" id="res-lname" placeholder="Nazwisko">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Telefon</label>
+                        <input type="tel" class="form-input" id="res-phone" placeholder="+48 600 000 000">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">E-mail (opcjonalnie)</label>
+                        <input type="email" class="form-input" id="res-email" placeholder="twoj@email.pl">
+                    </div>
+                    <div class="form-group full">
+                        <label class="form-label">Specjalne życzenia</label>
+                        <textarea class="form-textarea" id="res-notes" placeholder="Alergie, uroczystość, preferencje dotyczące miejsca przy oknie, w ciszy..."></textarea>
+                    </div>
+                </div>
+                <div class="step-nav">
+                    <button class="btn-ghost" onclick="prevStep(4)"><i class="fas fa-arrow-left"></i> Wstecz</button>
+                    <button class="btn-primary" onclick="nextStep(4)">Dalej — Zamów menu <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- STEP 5: Zamówienie menu -->
+            <div class="step-panel" id="step-5">
+                <h2 class="panel-title">Zamów Menu (opcjonalnie)</h2>
+                <p class="panel-subtitle">Przyspiesz obsługę kuchni — możesz wybrać dania dla każdej osoby już teraz.</p>
+
+                <div id="persons-btns" class="persons-btns"></div>
+
+                <div class="meal-selector">
+                    <h3 class="meal-selector-title">
+                        Wybierz dania dla <span id="current-person-label">Osoby 1</span>
+                    </h3>
+                    <div id="mini-menu-list"></div>
+                </div>
+
+                <div style="margin-top:16px;padding:14px 18px;background:rgba(197,160,111,0.07);border-radius:var(--radius-sm);font-size:0.88rem;color:var(--text-light)">
+                    <i class="fas fa-info-circle" style="color:var(--accent-color);margin-right:8px"></i>
+                    Wybór dań jest opcjonalny. Możesz zamówić na miejscu.
+                </div>
+
+                <div class="step-nav">
+                    <button class="btn-ghost" onclick="prevStep(5)"><i class="fas fa-arrow-left"></i> Wstecz</button>
+                    <button class="btn-dark" onclick="nextStep(5)">
+                        <i class="fas fa-check"></i> Potwierdź Rezerwację
+                    </button>
+                </div>
+            </div>
+
+            <!-- STEP 6: Potwierdzenie -->
+            <div class="step-panel" id="step-6">
+                <div class="confirm-card">
+                    <span class="confirm-icon"><i class="fas fa-check-circle"></i></span>
+                    <h2 class="confirm-title">Rezerwacja Potwierdzona!</h2>
+                    <p class="confirm-sub">Potwierdzenie wyślemy na podany adres e-mail.</p>
+                    <div class="confirm-id-badge" id="confirm-reservation-id">LP-000000</div>
+                    <div class="confirm-details" id="confirm-details"></div>
+                    <p style="color:var(--text-light);font-size:0.88rem;margin-bottom:24px">
+                        Zachowaj numer rezerwacji. Jest wymagany przy wizycie w restauracji.
+                    </p>
+                    <button class="btn-primary" onclick="resetReservation()" style="margin-right:12px">
+                        <i class="fas fa-plus"></i> Nowa Rezerwacja
+                    </button>
+                    <button class="btn-ghost" onclick="showPage('home')">
+                        Powrót do Strony Głównej
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div><!-- end #page-rezervacija -->
+
+
+<!-- ================================================================
+     PAGE: KONTAKT
+     ================================================================ -->
+<div id="page-kontakt" class="page">
+
+    <div class="page-hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="page-hero-inner">
+            <span class="page-hero-label">Skontaktuj się</span>
+            <h1>Kontakt</h1>
+            <p>Jesteśmy do Twojej dyspozycji — zadzwoń, napisz lub odwiedź nas osobiście.</p>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <div class="contact-grid">
+
+            <!-- Left column: contact cards -->
+            <div>
+                <div class="info-card">
+                    <h2>Dane Kontaktowe</h2>
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap"><i class="fas fa-phone"></i></div>
+                        <div class="contact-detail">
+                            <h4>Telefon</h4>
+                            <p>+48 510 060 922</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-detail">
+                            <h4>E-mail</h4>
+                            <p>dworek.biala.dama@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon-wrap"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="contact-detail">
+                            <h4>Adres</h4>
+                            <p>aleja Legionów Polskich, 99-416 Nieborów</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h3><i class="fas fa-clock" style="color:var(--accent-color);margin-right:10px"></i>Godziny Otwarcia</h3>
+                    <table class="hours-table">
+                        <tr><td class="day-cell">Poniedziałek</td><td class="time-cell">12:00 – 20:00</td></tr>
+                        <tr><td class="day-cell">Wtorek</td>     <td class="time-cell">12:00 – 20:00</td></tr>
+                        <tr><td class="day-cell">Środa</td>      <td class="time-cell">12:00 – 20:00</td></tr>
+                        <tr><td class="day-cell">Czwartek</td>   <td class="time-cell">12:00 – 20:00</td></tr>
+                        <tr><td class="day-cell">Piątek</td>     <td class="time-cell">12:00 – 20:00</td></tr>
+                        <tr><td class="day-cell">Sobota</td>     <td class="time-cell">11:00 – 20:00</td></tr>
+                        <tr><td class="day-cell">Niedziela</td>  <td class="time-cell">11:00 – 20:00</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Right column: history + photos -->
+            <div class="history-col">
+                <span class="section-label">O nas</span>
+                <h3>Zostań Gościem Dworku „Biała Dama”</h3>
+                <p>Wyróżnia nas doskonała lokalizacja, wyjątkowa atmosfera oraz doskonała kuchnia. Zapraszamy w nasze progi, gdyż jesteśmy pewni, że organizując wesele w naszym Dworku czy po prostu przyjeżdżając do nas odpocząć, poczujesz ducha magnackich czasów.
+                Szukasz miejsca, w którym smacznie zjesz, zorganizujesz niezapomniane wesele, szkolenie lub imprezę integracyjną dla swoich pracowników? Przyjedź do Nieborowa!
+                Chcesz wiedzieć więcej?
+                Skontaktuj się z nami telefonicznie lub mailowo - chętnie odpowiemy na Twoje pytania.</p>
+                <div class="history-photos">
+                    <div class="history-photo"><img src="photos/sala-kominkowa.png" alt="Sala kominkowa"></div>
+                    <div class="history-photo"><img src="photos/sala_zlota.png"     alt="Sala Złota Paproć"></div>
+                    <div class="history-photo"><img src="photos/historia_1.png"       alt="Historia"></div>
+                    <div class="history-photo"><img src="photos/taras.png"    alt="Taras letni"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- KARIERA -->
+        <div class="kariera-section">
+            <span class="section-label">Dołącz do nas</span>
+            <h2>Kariera w Dworku „Biała Dama”</h2>
+            <p>
+                Szukamy pasjonatów kuchni, gościnności i natury. Oferujemy przyjazne środowisko pracy,
+                konkurencyjne wynagrodzenie i możliwość rozwoju. Aktualne stanowiska:
+                <strong style="color:var(--accent-light)">Kelner/Kelnerka, Kucharz, Pomoc Kuchenna, Recepcja Hotelowa oraz Osoba do Sprzątania</strong>
+            </p>
+            <div class="kariera-btns">
+                <button class="kariera-btn kariera-btn-phone" onclick="showToast('Zadzwoń: +48  510 060 922 — zapytaj o dział HR')">
+                    <i class="fas fa-phone"></i> Zadzwoń do nas
+                </button>
+                <button class="kariera-btn kariera-btn-email" onclick="showToast('Wyślij CV na: dworek.biala.dama@gmail.com')">
+                    <i class="fas fa-paper-plane"></i> 
+                    Wyślij CV — dworek.biala.dama@gmail.com
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div><!-- end #page-kontakt -->
+
+
+<!-- ================================================================
+     PAGE: OKOLICA
+     ================================================================ -->
+<div id="page-okolica" class="page">
+
+    <div class="page-hero">
+        <img class="page-hero-bg" src="photos/puszcza.svg" alt="Okolica">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="page-hero-inner">
+            <span class="page-hero-label">Odkryj</span>
+            <h1>Nasza Okolica</h1>
+            <p>Warmia i Mazury — kraina tysiąca jezior, szlaków i niezapomnianych wschodów słońca.</p>
+        </div>
+    </div>
+
+    <div class="section-container">
+        <div class="okolica-intro">
+            <div>
+                <span class="section-label">Gdzie jesteśmy</span>
+                <h2>Elegancja w sercu historii</h2>
+                <p>Dworek Biała Dama to elegancki obiekt położony w Nieborowie, w sąsiedztwie Pałacu Radziwiłłów oraz Ogrodu w Arkadii — jednych z najpiękniejszych historycznych rezydencji w Polsce. To miejsce, gdzie wysoki standard obsługi, starannie urządzone wnętrza i wyjątkowa kuchnia tworzą atmosferę prawdziwej elegancji. Profesjonalna obsługa oraz domowa atmosfera sprawiają, że każdy gość czuje się u nas wyjątkowo i chętnie do nas wraca. Nasz dworek to nie tylko nocleg, to przestrzeń, w której czas płynie wolniej, a poranna kawa na tarasie smakuje najlepiej na świecie. Zapraszamy do odkrycia magii Nieborowa, korzystając z komfortu i prywatności, jakie gwarantuje Biała Dama.</p>
+                <div class="stat-pills">
+                    <div class="stat-pill"><div class="pill-val">300 m</div><div class="pill-lbl">do Pałacu Radziwiłłów</div></div>
+                    <div class="stat-pill"><div class="pill-val">4 km</div><div class="pill-lbl">do Ogrodu w Arkadii</div></div>
+                    <div class="stat-pill"><div class="pill-val">5 km</div><div class="pill-lbl">do Bolimowskiego Parku Krajobrazowego</div></div>
+                </div>
+            </div>
+            <div class="map-frame">
+                <a href="https://maps.app.goo.gl/XpB86hTg9h4NNZ268" target="_blank" rel="noopener noreferrer" title="Zobacz na mapach Google">
+                    <img src="photos/mapa.png" alt="Mapa okolicy — Dworek Biała Dama" class="map-frame-img">
+                    <div class="map-frame-overlay">
+                        <i class="fas fa-map-marked-alt"></i>
+                        <span>Otwórz w Google Maps</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="section-header">
+            <span class="section-label">Co warto zobaczyć</span>
+            <h2>Atrakcje w pobliżu</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="attractions-grid" id="attractions-grid"></div>
+    </div>
+
+</div><!-- end #page-okolica -->
+
+
+<!-- ================================================================
+     PAGE: VOUCHERY
+     ================================================================ -->
+<div id="page-vouchery" class="page">
+
+    <div class="voucher-hero">
+        <span class="section-label">Wyjątkowy prezent</span>
+        <h1>Vouchery Podarunkowe</h1>
+        <p>Podaruj bliskim niezapomniane chwile w otoczeniu natury. Vouchery do restauracji, hotelu i pakietów specjalnych.</p>
+    </div>
+
+    <!-- Voucher card visual -->
+    <div class="voucher-card-wrap">
+        <div class="voucher-card">
+            <div class="voucher-inner">
+                <div class="voucher-logo-area">
+                    <div class="voucher-name">Dworek Biała Dama</div>
+                    <div class="voucher-amount">250<sup>zł</sup></div>
+                    <div class="voucher-tag">VOUCHER</div>
+                </div>
+                <div class="voucher-sep"></div>
+                <div class="voucher-text">
+                    <h3>Karta Podarunkowa</h3>
+                    <p>Ważna 12 miesięcy od daty zakupu. Do realizacji w restauracji i hotelu.</p>
+                    <div class="voucher-code">LP-XXXX-XXXX</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-container" style="padding-top:90px">
+        <div class="voucher-info-grid">
+            <div class="voucher-info-card">
+                <i class="fas fa-tags"></i>
+                <h3>Dostępne kwoty</h3>
+                <p>Vouchery w wartości 100 zł, 200 zł, 250 zł, 500 zł lub dowolnej kwocie wybranej przez Ciebie.</p>
+            </div>
+            <div class="voucher-info-card">
+                <i class="fas fa-calendar-alt"></i>
+                <h3>Ważność</h3>
+                <p>Każdy voucher jest ważny przez 12 miesięcy od daty zakupu. Termin widnieje na karcie.</p>
+            </div>
+            <div class="voucher-info-card">
+                <i class="fas fa-store"></i>
+                <h3>Gdzie realizować</h3>
+                <p>Voucher można zrealizować w restauracji, hotelu lub połączyć — na jedną lub kilka wizyt.</p>
+            </div>
+        </div>
+
+        <div class="voucher-steps">
+            <h2>Jak zdobyć voucher?</h2>
+            <div class="vstep">
+                <div class="vstep-num">1</div>
+                <div class="vstep-body">
+                    <h4>Skontaktuj się z nami</h4>
+                    <p>Zadzwoń pod numer <strong>+ +48 510 060 922</strong> lub napisz na <strong>dworek.biala.dama@gmail.com</strong> — podaj kwotę i dane do faktury (opcjonalnie).</p>
+                </div>
+            </div>
+            <div class="vstep">
+                <div class="vstep-num">2</div>
+                <div class="vstep-body">
+                    <h4>Dokonaj płatności</h4>
+                    <p>Przyjmujemy przelewy bankowe, kartę przez terminal lub płatność gotówką na miejscu w restauracji.</p>
+                </div>
+            </div>
+            <div class="vstep">
+                <div class="vstep-num">3</div>
+                <div class="vstep-body">
+                    <h4>Odbierz lub wyślemy pocztą</h4>
+                    <p>Voucher możesz odebrać osobiście lub wyślemy go przesyłką kurierską w eleganckiej kopercie (3–5 dni roboczych).</p>
+                </div>
+            </div>
+            <div class="vstep">
+                <div class="vstep-num">4</div>
+                <div class="vstep-body">
+                    <h4>Ciesz się wizytą</h4>
+                    <p>Pokaż voucher przy zameldowaniu lub płatności. Wystarczy numer lub oryginalna karta.</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="text-align:center;margin-top:50px">
+            <button class="btn-primary" style="font-size:1rem;padding:18px 50px" onclick="showToast('Zadzwoń: tel. +48 510 060 922 lub napisz: dworek.biala.dama@gmail.com')">
+                <i class="fas fa-gift"></i> Zamów Voucher
+            </button>
+        </div>
+    </div>
+
+</div><!-- end #page-vouchery -->
+
+
+<!-- ================================================================
+     PAGE: HOTEL
+     ================================================================ -->
+<div id="page-hotel" class="page">
+
+    <div class="page-hero">
+        <img class="page-hero-bg" src="photos/hotel-2os.svg" alt="Hotel">
+        <div class="hero-overlay"></div>
+        <div class="hero-pattern"></div>
+        <div class="page-hero-inner">
+            <span class="page-hero-label">Nocleg w naturze</span>
+            <h1>Hotel Biała Dama</h1>
+            <p>Zostań na jedną noc — lub dłużej.</p>
+        </div>
+    </div>
+
+    <div class="section-container">
+
+        <!-- Gallery -->
+        <div class="section-header" style="margin-bottom:28px">
+            <span class="section-label">Galeria</span>
+            <h2>Nasze Pokoje</h2>
+            <div class="gold-line"></div>
+        </div>
+        <div class="hotel-gallery">
+            <div class="hotel-gallery-img main"><img src="photos/hotel-2os.png"    alt="Pokój dwuosobowy"></div>
+            <div class="hotel-gallery-img"><img src="photos/hotel-1os.png"         alt="Pokój jednoosobowy"></div>
+            <div class="hotel-gallery-img"><img src="photos/hotel-apt.png"         alt="Apartament"></div>
+            <div class="hotel-gallery-img"><img src="photos/hotel-family.png"      alt="Apartament rodzinny"></div>
+            <div class="hotel-gallery-img"><img src="photos/sala-kominkowa.png"    alt="Salon z kominkiem"></div>
+        </div>
+
+        <!-- Prices -->
+        <div class="section-header">
+            <span class="section-label">Cennik</span>
+            <h2>Ceny za Dobę</h2>
+            <div class="gold-line"></div>
+            <p>Wszystkie ceny zawierają śniadanie, bezpłatny parking i dostęp do restauracji.</p>
+        </div>
+        <div class="price-grid" id="price-grid"></div>
+
+        <!-- Booking info -->
+        <div class="hotel-booking">
+            <span class="section-label">Jak zarezerwować?</span>
+            <h2>Rezerwacja Pokoju</h2>
+            <p>Rezerwację hotelową przyjmujemy telefonicznie,przez Booking oraz mailowo.</p>
+            <div class="booking-steps">
+                <div class="booking-step">
+                    <div class="booking-step-icon"><i class="fas fa-phone"></i></div>
+                    <h4>1. Skontaktuj się</h4>
+                    <p>Zadzwoń lub napisz — podaj datę, liczbę osób i preferowany typ pokoju.</p>
+                </div>
+                <div class="booking-step">
+                    <div class="booking-step-icon"><i class="fas fa-credit-card"></i></div>
+                    <h4>2. Karta meldunkowa</h4>
+                    <p>Wypełnij kartę meldunkową z podanymi danymi na recepcjii.</p>
+                </div>
+                <div class="booking-step">
+                    <div class="booking-step-icon"><i class="fas fa-key"></i></div>
+                    <h4>3. Przyjazd</h4>
+                    <p>Zameldowanie od 12:00. Wymeldowanie do 10:00. Powitamy osobiście.</p>
+                </div>
+            </div>
+            <div class="hotel-booking-btns">
+                <button class="btn-primary" onclick="showToast('Zadzwoń: tel. +48 510 060 922')">
+                    <i class="fas fa-phone"></i> tel. +48 510 060 922
+
+
+                </button>
+                <button class="btn-secondary" onclick="showToast('Napisz: dworek.biala.dama@gmail.com')">
+                    <i class="fas fa-envelope"></i> dworek.biala.dama@gmail.com
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div><!-- end #page-hotel -->
+
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<!-- ================================================================
+        PAGE: IMPREZY & WESELA
+     ================================================================ -->
+
+<div id="page-imprezy" class="page">
+
+    <div class="imprezy-hero">
+        <div class="hero-pattern"></div>
+        <span class="section-label">Organizacja wydarzeń</span>
+        <h1>Imprezy &amp; Wesela</h1>
+        <p>Cztery eleganckie sale, każda o unikalnym charakterze — od kameralnych uroczystości po wielkie wesela. Dworek Biała Dama to idealne miejsce na niezapomniane chwile.</p>
+    </div>
+
+    <div class="imprezy-intro-text">
+        <h2>Twoje wydarzenie w wyjątkowym miejscu</h2>
+        <div class="gold-line"></div>
+        <p>Zapraszamy do odkrycia naszych czterech sal bankietowych, z których każda oferuje niepowtarzalną atmosferę i pełne zaplecze techniczne. Skontaktuj się z nami, aby omówić szczegóły i sprawdzić dostępność terminu.</p>
+    </div>
+
+    <div class="section-container" style="padding-top:20px">
+
+        <!-- SALA KRYSZTAŁOWA -->
+        <div class="event-room-card">
+            <img class="event-room-img" src="photos/sala_krysztalowa.jpg" alt="Sala Kryształowa">
+            <div class="event-room-body">
+                <span class="section-label">Sala nr 1</span>
+                <h2 class="room-name">Sala Kryształowa</h2>
+                <div class="room-capacity"><i class="fas fa-users"></i> Maks. 50 gości</div>
+                <p class="room-desc">
+                    Elegancka Sala Kryształowa to perła Dworku Biała Dama, której nazwa pochodzi od zachwycających kryształowych żyrandoli zdobiących jej sklepienie. Utrzymana w jasnych, delikatnych barwach tworzy wyrafinowaną atmosferę idealną na przyjęcia weselne oraz galowe uroczystości. Wysoki sufit i duże okna wpuszczają naturalne światło, tworząc niepowtarzalny nastrój o każdej porze dnia. Doskonale sprawdza się przy bankietach, balach, wieczorach galowych oraz eleganckich przyjęciach rodzinnych. Możliwa jest pełna dekoracja sali zgodnie z indywidualnymi życzeniami. Profesjonalne zaplecze kuchenne oraz obsługa kelnerska gwarantują najwyższy standard serwisu przez cały czas trwania imprezy.
+                </p>
+                <button class="btn-primary room-kontakt-btn" onclick="showPage('kontakt')">
+                    <i class="fas fa-envelope"></i> Kontakt &amp; Dostępność
+                </button>
+            </div>
+        </div>
+
+        <!-- SALA ZŁOTA PAPROĆ -->
+        <div class="event-room-card reverse">
+            <img class="event-room-img" src="photos/sala_zlota.png" alt="Sala «Złota Paproć»">
+            <div class="event-room-body">
+                <span class="section-label">Sala nr 2</span>
+                <h2 class="room-name">Sala «Złota Paproć»</h2>
+                <div class="room-capacity"><i class="fas fa-users"></i> Maks. 50 gości</div>
+                <p class="room-desc">
+                    Sala «Złota Paproć» to główna sala restauracyjna Dworku Biała Dama. Klimat sali tworzą piękne złote dekoracje, zabytkowe meble vintage oraz wyjątkowa atmosfera przytulności. W sali znajduje się bar, przy którym goście mogą spędzać czas w towarzystwie. Liczne detale dekoracyjne w złotych barwach nadają sali unikalny charakter, wyróżniający ją na tle innych przestrzeni restauracyjnych. Idealna na kameralne uroczystości rodzinne, jubileusze, przyjęcia firmowe oraz romantyczne kolacje we dwoje.
+                </p>
+                <button class="btn-primary room-kontakt-btn" onclick="showPage('kontakt')">
+                    <i class="fas fa-envelope"></i> Kontakt &amp; Dostępność
+                </button>
+            </div>
+        </div>
+
+        <!-- SALA ZIELONA -->
+        <div class="event-room-card">
+            <img class="event-room-img" src="photos/sala_zielona.png" alt="Sala Zielona">
+            <div class="event-room-body">
+                <span class="section-label">Sala nr 3</span>
+                <h2 class="room-name">Sala Zielona</h2>
+                <div class="room-capacity"><i class="fas fa-users"></i> Maks. 16 gości</div>
+                <p class="room-desc">
+                    Sala Zielona to kameralna i wyjątkowo przytulna sala restauracyjna Dworku Biała Dama. Stworzona z myślą o spotkaniach prywatnych — oferuje spokojną, cichą atmosferę, która pozwala w pełni delektować się chwilą i towarzystwem bliskich osób. Największą atrakcją sali jest widok na zabytkowy park, który goście mogą podziwiać bezpośrednio przez okna podczas jedzenia. Sala Zielona to doskonały wybór dla par i małych grup ceniących spokój, prywatność i wyjątkowy charakter miejsca.
+                </p>
+                <button class="btn-primary room-kontakt-btn" onclick="showPage('kontakt')">
+                    <i class="fas fa-envelope"></i> Kontakt &amp; Dostępność
+                </button>
+            </div>
+        </div>
+
+        <!-- SALA WESELNA -->
+        <div class="event-room-card reverse">
+            <img class="event-room-img" src="photos/sala_weselna.jpg" alt="Sala Weselna">
+            <div class="event-room-body">
+                <span class="section-label">Sala nr 4</span>
+                <h2 class="room-name">Sala Weselna</h2>
+                <div class="room-capacity"><i class="fas fa-users"></i> Maks. 150 gości</div>
+                <p class="room-desc">
+                   Sala Weselna Dworku Biała Dama to jedna z największych i najbardziej reprezentacyjnych sal w regionie — przestronna, elegancka i gotowa przyjąć do 150 gości. Wysoki sufit, dworski wystrój i dbałość o każdy detal tworzą wyjątkową atmosferę, która zostaje w pamięci na długo.
+                   Sala wyposażona jest w w pełni oświetloną scenę, na którą można zaprosić DJ-a lub zespół muzyczny, oraz duży parkiet idealny do tańca. Na sali znajduje się również własny bar, przy którym goście mogą swobodnie spędzać czas przez cały wieczór.
+                   Dla urozmaicenia przyjęcia istnieje możliwość zaaranżowania stołu z deserami lub tradycyjnego stołu wiejskiego.
+                   Przestronny taras przylegający do sali umożliwia przeprowadzenie plenerowej ceremonii wśród zieleni. Każde wesele i każdą imprezę okolicznościową traktujemy indywidualnie — zapraszamy na spotkanie, aby omówić szczegóły i dopasować ofertę do Waszych oczekiwań.
+                </p>
+                <button class="btn-primary room-kontakt-btn" onclick="showPage('kontakt')">
+                    <i class="fas fa-envelope"></i> Kontakt &amp; Dostępność
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div><!-- end #page-imprezy -->
+
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-grid">
+            <div>
+                <div class="footer-logo">Biała <span>Dama</span></div>
+                <p class="footer-desc">Dworek Biała Dama to nie tylko stylowe wnętrza i gościnność, to przede wszystkim wyjątkowa lokalizacja. Znajdujemy się w samym sercu historycznego Mazowsza, gdzie wielka historia przeplata się z kojącą naturą.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Nawigacja</h4>
+                <ul>
+                    <li><button onclick="showPage('home')">Główna</button></li>
+                    <li><button onclick="showPage('restauracja')">Restauracja</button></li>
+                    <li><button onclick="showPage('hotel')">Hotel</button></li>
+                    <li><button onclick="showPage('okolica')">Okolica</button></li>
+                    <li><button onclick="showPage('vouchery')">Vouchery</button></li>
+                    <li><button onclick="showPage('kontakt')">Kontakt</button></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Kontakt</h4>
+                <ul>
+                    <li><a href="tel. +48 510 060 922">
+                        Recepcja i Restauracja
+                        <p>tel. +48 510 060 922</p>
+                    </a></li>
+                    <li><a href="tel. +48 602 574 891">
+                        Katarzyna Kośmider
+                        <p>tel. +48 602 574 891</p>
+                    </a></li>
+                    <li>dworek.biala.dama@gmail.com</li>
+                    <li><a>                        aleja Legionów Polskich 2, 99-416 Nieborów</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom" style="display:flex;justify-content:space-between;align-items:center">
+            <span>© 2026 Restauracja &amp; Hotel Dworek Biała Dama. Wszelkie prawa zastrzeżone.</span>
+            <button id="staff-login-btn" class="staff-login-btn" onclick="showManagerLogin()" title="Panel pracownika">Staff Login</button>
+        </div>
+    </div>
+</footer>
+
+
+<!-- ================================================================
+     MANAGER: LOGIN OVERLAY
+     ================================================================ -->
+<div id="manager-login-overlay" class="manager-overlay hidden">
+    <div class="mlogin-wrap">
+        <div class="mlogin-box">
+            <div class="mlogin-logo">
+                <div class="logo-text">Biała <span>Dama</span></div>
+                <p>Panel Pracownika</p>
+            </div>
+            <div id="mlogin-error" class="mlogin-error">Nieprawidłowy login lub hasło.</div>
+            <div class="form-group" style="margin-bottom:16px">
+                <label class="form-label">Nazwa użytkownika</label>
+                <input type="text" class="form-input" id="mlogin-username" placeholder="Login" autocomplete="off">
+            </div>
+            <div class="form-group" style="margin-bottom:22px">
+                <label class="form-label">Hasło</label>
+                <input type="password" class="form-input" id="mlogin-password" placeholder="Hasło" onkeydown="if(event.key==='Enter')doManagerLogin()">
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center" onclick="doManagerLogin()">
+                <i class="fas fa-sign-in-alt"></i> Zaloguj się
+            </button>
+            <button class="mlogin-back" onclick="hideManagerLogin()">
+                <i class="fas fa-arrow-left"></i> Powrót do strony głównej
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     MANAGER: DASHBOARD OVERLAY
+     ================================================================ -->
+<div id="manager-dashboard" class="manager-overlay hidden">
+    <div class="manager-layout">
+
+        <!-- LEFT SIDEBAR -->
+        <aside class="manager-sidebar">
+            <div class="manager-sidebar-logo">
+                <div class="ml-brand">Biała <span>Dama</span></div>
+                <div class="ml-sub">Panel Managera</div>
+            </div>
+            <div class="manager-sidebar-user">
+                <div class="msu-avatar"><i class="fas fa-user"></i></div>
+                <div class="msu-info">
+                    <div class="msu-name" id="mgr-username-display">—</div>
+                    <div class="msu-role" id="mgr-role-display">—</div>
+                </div>
+            </div>
+            <nav class="manager-nav">
+                <!-- RESTAURACJA -->
+                <div class="manager-nav-section">
+                    <div class="manager-nav-section-title">Restauracja</div>
+                    <button class="manager-nav-item active" onclick="showMgrPanel('map')">
+                        <i class="fas fa-map"></i> Mapa stolików
+                    </button>
+                    <button class="manager-nav-item" onclick="showMgrPanel('active')">
+                        <i class="fas fa-calendar-check"></i> Aktywne
+                        <span class="nav-badge" id="badge-active">0</span>
+                    </button>
+                    <button class="manager-nav-item" onclick="showMgrPanel('pending')">
+                        <i class="fas fa-clock"></i> Oczekujące
+                        <span class="nav-badge" id="badge-pending">0</span>
+                    </button>
+                    <button class="manager-nav-item" onclick="showMgrPanel('cancelled')">
+                        <i class="fas fa-times-circle"></i> Anulowane
+                    </button>
+                    <button class="manager-nav-item" onclick="showMgrPanel('history')">
+                        <i class="fas fa-history"></i> Historia
+                    </button>
+                    <button class="manager-nav-item" onclick="showMgrPanel('stats')">
+                        <i class="fas fa-chart-bar"></i> Statystyki
+                    </button>
+                    <button class="manager-nav-item" onclick="showMgrPanel('layout')">
+                        <i class="fas fa-th"></i> Edytuj układ stolików
+                    </button>
+                </div>
+                <!-- USTAWIENIA -->
+                <div class="manager-nav-section">
+                    <div class="manager-nav-section-title">Ustawienia</div>
+                    <button class="manager-nav-item" id="nav-add-user" onclick="showMgrPanel('adduser')">
+                        <i class="fas fa-user-plus"></i> Dodaj użytkownika
+                    </button>
+                    <button class="manager-nav-item" onclick="showMgrPanel('changepass')">
+                        <i class="fas fa-key"></i> Zmień hasło
+                    </button>
+                    <button class="manager-nav-item" onclick="doManagerLogout()" style="color:rgba(245,101,101,0.8)">
+                        <i class="fas fa-sign-out-alt"></i> Wyloguj
+                    </button>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="manager-main">
+
+            <!-- PANEL: MAPA STOLIKÓW -->
+            <div class="manager-panel active" id="mgr-panel-map">
+                <div class="manager-panel-header">
+                    <div><h1>Mapa Stolików</h1><p>Widok rezerwacji w czasie rzeczywistym</p></div>
+                </div>
+                <div class="mgr-map-controls" style="flex-wrap:wrap">
+                    <button class="mgr-hall-btn active" onclick="setMgrHall('kominkowa',this)">Złota Paproć</button>
+                    <button class="mgr-hall-btn" onclick="setMgrHall('lesna',this)">Sala Zielona</button>
+                    <button class="mgr-hall-btn" onclick="setMgrHall('taras',this)">Taras</button>
+                    <div style="display:flex;gap:10px;align-items:center;margin-left:auto">
+                        <label style="font-size:0.8rem;color:var(--text-light)">Data:</label>
+                        <input type="date" id="mgr-map-date" class="form-input" style="padding:7px 12px;max-width:160px" oninput="renderMgrMap(_mgrCurrentHall)">
+                        <label style="font-size:0.8rem;color:var(--text-light)">Godz.:</label>
+                        <select id="mgr-map-time" class="form-select" style="padding:7px 12px;max-width:130px" onchange="renderMgrMap(_mgrCurrentHall)">
+                            <option value="">Wszystkie</option>
+                            <option>11:00</option><option>11:15</option><option>11:30</option><option>11:45</option><option>12:00</option><option>12:15</option><option>12:30</option><option>12:45</option><option>13:00</option><option>13:15</option><option>13:30</option><option>13:45</option><option>14:00</option><option>14:15</option><option>14:30</option><option>14:45</option><option>15:00</option><option>15:15</option><option>15:30</option><option>15:45</option><option>16:00</option><option>16:15</option><option>16:30</option><option>16:45</option><option>17:00</option><option>17:15</option><option>17:30</option><option>17:45</option><option>18:00</option><option>18:15</option><option>18:30</option><option>18:45</option><option>19:00</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mgr-floor-map" id="mgr-floor-map"></div>
+                <div class="map-legend" style="margin-top:14px">
+                    <div class="legend-item"><div class="legend-dot free"></div>Wolny (kliknij → zablokuj)</div>
+                    <div class="legend-item"><div class="legend-dot" style="background:#eab308"></div>Oczekująca rezerwacja</div>
+                    <div class="legend-item"><div class="legend-dot occupied"></div>Zajęty / Potwierdzony</div>
+                    <div class="legend-item" style="margin-left:auto;display:flex;gap:10px">
+                        <button class="btn-ghost" style="padding:7px 16px;font-size:0.82rem" onclick="openManualBlockModal(null)">
+                            <i class="fas fa-lock" style="margin-right:6px;color:var(--accent-color)"></i>Zablokuj stolik ręcznie
+                        </button>
+                        <button class="btn-ghost" style="padding:7px 16px;font-size:0.82rem;color:#e53e3e;border-color:#fed7d7" onclick="openHallBlockModal()">
+                            <i class="fas fa-ban" style="margin-right:6px"></i>Zablokuj całą salę
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: AKTYWNE -->
+            <div class="manager-panel" id="mgr-panel-active">
+                <div class="manager-panel-header">
+                    <div><h1>Aktywne Rezerwacje</h1><p>Potwierdzone rezerwacje</p></div>
+                    <button class="btn-primary" onclick="refreshMgrPanel('active')"><i class="fas fa-sync"></i> Odśwież</button>
+                </div>
+                <div id="mgr-list-active"></div>
+            </div>
+
+            <!-- PANEL: OCZEKUJĄCE -->
+            <div class="manager-panel" id="mgr-panel-pending">
+                <div class="manager-panel-header">
+                    <div><h1>Oczekujące Rezerwacje</h1><p>Wymagają potwierdzenia</p></div>
+                    <button class="btn-primary" onclick="refreshMgrPanel('pending')"><i class="fas fa-sync"></i> Odśwież</button>
+                </div>
+                <div id="mgr-list-pending"></div>
+            </div>
+
+            <!-- PANEL: ANULOWANE -->
+            <div class="manager-panel" id="mgr-panel-cancelled">
+                <div class="manager-panel-header">
+                    <div><h1>Anulowane Rezerwacje</h1><p>Historia anulowań</p></div>
+                </div>
+                <div id="mgr-list-cancelled"></div>
+            </div>
+
+            <!-- PANEL: HISTORIA -->
+            <div class="manager-panel" id="mgr-panel-history">
+                <div class="manager-panel-header">
+                    <div><h1>Historia Rezerwacji</h1><p>Wszystkie rezerwacje w systemie</p></div>
+                </div>
+                <div style="margin-bottom:16px;display:flex;gap:12px;flex-wrap:wrap">
+                    <input type="text" id="hist-search" placeholder="Szukaj (ID, gość, telefon...)" class="form-input" style="max-width:300px;padding:10px 16px" oninput="refreshMgrPanel('history')">
+                    <select id="hist-filter-hall" class="form-select" style="max-width:200px;padding:10px 14px" onchange="refreshMgrPanel('history')">
+                        <option value="">Wszystkie sale</option>
+                        <option value="kominkowa">Złota Paproć</option>
+                        <option value="lesna">Sala Zielona</option>
+                        <option value="taras">Taras</option>
+                    </select>
+                </div>
+                <div id="mgr-list-history"></div>
+            </div>
+
+            <!-- PANEL: STATYSTYKI -->
+            <div class="manager-panel" id="mgr-panel-stats">
+                <div class="manager-panel-header">
+                    <div><h1>Statystyki</h1><p>Przegląd rezerwacji i aktywności</p></div>
+                </div>
+                <div class="stats-row" id="mgr-stats-row"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+                    <div class="res-table-wrap" style="padding:24px">
+                        <h3 style="margin-bottom:20px;font-size:1.3rem">Rezerwacje wg sali</h3>
+                        <div id="mgr-chart-halls"></div>
+                    </div>
+                    <div class="res-table-wrap" style="padding:24px">
+                        <h3 style="margin-bottom:20px;font-size:1.3rem">Rezerwacje wg statusu</h3>
+                        <div id="mgr-chart-status"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL: EDYCJA UKŁADU -->
+            <div class="manager-panel" id="mgr-panel-layout">
+                <div class="manager-panel-header">
+                    <div><h1>Edytuj Układ Stolików</h1><p>Przeciągnij stoliki — zapisuj jako szablony (maks. 3 na salę)</p></div>
+                </div>
+                <div class="mgr-map-controls">
+                    <button class="mgr-hall-btn active" onclick="setLayoutHall('kominkowa',this)">Złota Paproć</button>
+                    <button class="mgr-hall-btn" onclick="setLayoutHall('lesna',this)">Sala Zielona</button>
+                    <button class="mgr-hall-btn" onclick="setLayoutHall('taras',this)">Taras</button>
+                </div>
+
+                <!-- TEMPLATE BAR -->
+                <div class="template-section">
+                    <div class="template-section-label">
+                        <i class="fas fa-layer-group" style="margin-right:6px;color:var(--accent-color)"></i>
+                        Szablony układu <span style="font-size:0.78rem;color:var(--text-light)">(wybierz slot → edytuj → Zapisz)</span>
+                    </div>
+                    <div id="template-bar" class="template-bar"></div>
+                    <div id="tpl-save-confirm" class="tpl-save-confirm" style="display:none"></div>
+                </div>
+
+                <div class="edit-layout-toolbar" style="gap:10px;flex-wrap:wrap">
+                    <button class="btn-primary" onclick="addLayoutTable()"><i class="fas fa-plus"></i> Dodaj stolik</button>
+                    <label style="font-size:0.85rem;color:var(--text-light);display:flex;align-items:center;gap:6px">Poj.: <input type="number" id="new-table-cap" value="4" min="1" max="20"></label>
+                    <div style="width:1px;height:30px;background:var(--glass-border);margin:0 4px"></div>
+                    <button class="btn-ghost" onclick="addFloorElement('entrance')" title="Dodaj wejście"><i class="fas fa-door-open"></i> Wejście</button>
+                    <button class="btn-ghost" onclick="addFloorElement('window')"   title="Dodaj okno"><i class="fas fa-border-all"></i> Okno</button>
+                    <button class="btn-ghost" onclick="addFloorElement('obstacle')" title="Dodaj element (bar, słup, dekoracja)"><i class="fas fa-th"></i> Bar / Dekoracja</button>
+                    <div style="width:1px;height:30px;background:var(--glass-border);margin:0 4px"></div>
+                    <button class="btn-primary" onclick="saveLayoutTables()" style="background:var(--gold-gradient)">
+                        <i class="fas fa-save"></i> Zapisz szablon
+                    </button>
+                    <button class="btn-ghost" onclick="rotateSelectedOrAll()" title="Podwójne kliknięcie na stoliku też obraca"><i class="fas fa-sync-alt"></i> Obróć zaznaczony</button>
+                    <button class="btn-ghost" onclick="clearLayoutHall()" style="color:#e53e3e;border-color:#fed7d7"><i class="fas fa-trash-alt"></i> Wyczyść salę</button>
+                    <button class="btn-ghost" onclick="resetLayoutTables()"><i class="fas fa-undo"></i> Resetuj</button>
+                </div>
+                <div class="mgr-floor-map" id="layout-floor-map" style="height:500px"></div>
+                <div class="edit-help">
+                    <i class="fas fa-info-circle" style="color:var(--accent-color);margin-right:6px"></i>
+                    <strong>Stoliki:</strong> przeciągnij aby przesunąć · podwójne klik = obróć (zmień orientację) · prawy przycisk = usuń.
+                    <strong>Szablony:</strong> wybierz slot, ułóż stoliki, kliknij „Zapisz szablon". Możesz mieć 3 szablony na salę.
+                </div>
+            </div>
+
+            <!-- PANEL: DODAJ UŻYTKOWNIKA -->
+            <div class="manager-panel" id="mgr-panel-adduser">
+                <div class="manager-panel-header">
+                    <div><h1>Dodaj Użytkownika</h1><p>Nowy pracownik — dostęp do przeglądania rezerwacji</p></div>
+                </div>
+                <div class="settings-grid" style="max-width:700px">
+                    <div class="settings-card" style="grid-column:1/-1">
+                        <h3>Nowe konto <span class="admin-badge">STAFF</span></h3>
+                        <p>Nowy użytkownik będzie mógł przeglądać i zarządzać rezerwacjami, ale nie będzie mógł dodawać innych użytkowników.</p>
+                        <div id="adduser-msg" style="display:none;padding:10px 16px;border-radius:var(--radius-sm);margin-bottom:14px;font-size:0.88rem"></div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Nazwa użytkownika</label>
+                                <input type="text" class="form-input" id="new-username" placeholder="login">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Hasło</label>
+                                <input type="password" class="form-input" id="new-password" placeholder="min. 6 znaków">
+                            </div>
+                        </div>
+                        <button class="btn-primary" style="margin-top:8px" onclick="addManagerUser()">
+                            <i class="fas fa-user-plus"></i> Utwórz konto
+                        </button>
+                    </div>
+                </div>
+                <div style="max-width:700px;margin-top:30px">
+                    <h3 style="font-size:1.4rem;margin-bottom:16px">Istniejący użytkownicy</h3>
+                    <div id="users-list"></div>
+                </div>
+            </div>
+
+            <!-- PANEL: ZMIEŃ HASŁO -->
+            <div class="manager-panel" id="mgr-panel-changepass">
+                <div class="manager-panel-header">
+                    <div><h1>Zmień Hasło</h1><p>Zmień hasło dla swojego konta</p></div>
+                </div>
+                <div class="settings-card" style="max-width:460px">
+                    <h3>Nowe hasło</h3>
+                    <p>Podaj aktualne hasło i ustaw nowe.</p>
+                    <div id="chpass-msg" style="display:none;padding:10px 16px;border-radius:var(--radius-sm);margin-bottom:14px;font-size:0.88rem"></div>
+                    <div class="form-group" style="margin-bottom:14px">
+                        <label class="form-label">Aktualne hasło</label>
+                        <input type="password" class="form-input" id="cp-old" placeholder="Aktualne hasło">
+                    </div>
+                    <div class="form-group" style="margin-bottom:14px">
+                        <label class="form-label">Nowe hasło</label>
+                        <input type="password" class="form-input" id="cp-new" placeholder="Nowe hasło (min. 6 znaków)">
+                    </div>
+                    <div class="form-group" style="margin-bottom:20px">
+                        <label class="form-label">Powtórz nowe hasło</label>
+                        <input type="password" class="form-input" id="cp-new2" placeholder="Powtórz hasło">
+                    </div>
+                    <button class="btn-primary" onclick="changeManagerPassword()">
+                        <i class="fas fa-key"></i> Zmień hasło
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+</div><!-- end #manager-dashboard -->
+
+
+<!-- ================================================================
+     SHARED: RESERVATION DETAIL MODAL
+     ================================================================ -->
+<div id="res-detail-modal" class="res-modal-overlay">
+    <div class="res-modal">
+        <button class="res-modal-close" onclick="closeResModal()">
+            <i class="fas fa-times"></i>
+        </button>
+        <h2>Szczegóły Rezerwacji</h2>
+        <div id="res-modal-body"></div>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     HALL BLOCK MODAL (manager: block entire hall for a time range)
+     ================================================================ -->
+<div id="hall-block-modal" class="res-modal-overlay">
+    <div class="res-modal" style="max-width:500px">
+        <button class="res-modal-close" onclick="closeHallBlockModal()"><i class="fas fa-times"></i></button>
+        <h2><i class="fas fa-ban" style="color:#e53e3e;margin-right:10px;font-size:1.4rem"></i>Zablokuj całą salę</h2>
+        <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:20px">
+            Wszystkie stoliki w wybranej sali staną się niedostępne w podanym przedziale czasu.
+            <br><strong id="hblock-hall-name"></strong>
+        </p>
+        <div id="hblock-error" style="display:none;padding:10px 14px;background:#fde8e8;color:#9b2c2c;border-radius:var(--radius-sm);margin-bottom:14px;font-size:0.88rem;border:1px solid #f56565"></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+            <div class="form-group">
+                <label class="form-label">Data *</label>
+                <input type="date" class="form-input" id="hblock-date">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Powód blokady</label>
+                <input type="text" class="form-input" id="hblock-reason" placeholder="np. Impreza prywatna">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Godzina od *</label>
+                <select class="form-select" id="hblock-time-from">
+                    <option value="">Wybierz</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Godzina do *</label>
+                <select class="form-select" id="hblock-time-to">
+                    <option value="">Wybierz</option>
+                </select>
+            </div>
+        </div>
+        <div style="display:flex;gap:12px">
+            <button class="btn-primary" style="flex:1;justify-content:center;background:linear-gradient(135deg,#e53e3e,#c53030)" onclick="confirmHallBlock()">
+                <i class="fas fa-ban"></i> Zablokuj całą salę
+            </button>
+            <button class="btn-ghost" onclick="closeHallBlockModal()">Anuluj</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     MANUAL BLOCK MODAL (manager: walk-in / phone reservation)
+     ================================================================ -->
+<div id="manual-block-modal" class="res-modal-overlay">
+    <div class="res-modal" style="max-width:520px">
+        <button class="res-modal-close" onclick="closeManualBlockModal()"><i class="fas fa-times"></i></button>
+        <h2><i class="fas fa-lock" style="color:var(--accent-color);margin-right:10px;font-size:1.4rem"></i>Zablokuj stolik ręcznie</h2>
+        <p style="color:var(--text-light);font-size:0.9rem;margin-bottom:20px">
+            Dla gości z ulicy lub rezerwacji telefonicznych.
+            <br><strong id="block-hall-name"></strong> — <strong id="block-table-num"></strong>
+        </p>
+        <div id="block-error" style="display:none;padding:10px 14px;background:#fde8e8;color:#9b2c2c;border-radius:var(--radius-sm);margin-bottom:14px;font-size:0.88rem;border:1px solid #f56565"></div>
+
+        <!-- If no table pre-selected, show table number input -->
+        <div id="block-tablenum-row" style="margin-bottom:16px">
+            <label class="form-label">Nr stolika *</label>
+            <input type="number" class="form-input" id="block-manual-tablenum" min="1" max="50" placeholder="np. 3" style="max-width:120px">
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+            <div class="form-group">
+                <label class="form-label">Imię *</label>
+                <input type="text" class="form-input" id="block-fname" placeholder="Imię">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Nazwisko *</label>
+                <input type="text" class="form-input" id="block-lname" placeholder="Nazwisko">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Telefon *</label>
+                <input type="tel" class="form-input" id="block-phone" placeholder="+48 600 000 000">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Data *</label>
+                <input type="date" class="form-input" id="block-date">
+            </div>
+            <div class="form-group">
+                <label class="form-label">Godzina *</label>
+                <select class="form-select" id="block-time">
+                    <option value="">Wybierz</option>
+                    <option>11:00</option><option>11:15</option><option>11:30</option><option>11:45</option><option>12:00</option><option>12:15</option><option>12:30</option><option>12:45</option><option>13:00</option><option>13:15</option><option>13:30</option><option>13:45</option><option>14:00</option><option>14:15</option><option>14:30</option><option>14:45</option><option>15:00</option><option>15:15</option><option>15:30</option><option>15:45</option><option>16:00</option><option>16:15</option><option>16:30</option><option>16:45</option><option>17:00</option><option>17:15</option><option>17:30</option><option>17:45</option><option>18:00</option><option>18:15</option><option>18:30</option><option>18:45</option><option>19:00</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="form-label">Czas trwania *</label>
+                <select class="form-select" id="block-duration">
+                    <option value="">Ile godzin?</option>
+                    <option value="1">1 godzina</option>
+                    <option value="1.5">1,5 godz.</option>
+                    <option value="2">2 godziny</option>
+                    <option value="2.5">2,5 godz.</option>
+                    <option value="3">3 godziny</option>
+                    <option value="4">4 godziny</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group" style="margin-bottom:20px">
+            <label class="form-label">Uwagi</label>
+            <textarea class="form-textarea" id="block-notes" rows="2" placeholder="Opcjonalne uwagi..."></textarea>
+        </div>
+        <div style="display:flex;gap:12px">
+            <button class="btn-primary" style="flex:1;justify-content:center" onclick="confirmManualBlock()">
+                <i class="fas fa-lock"></i> Zablokuj stolik
+            </button>
+            <button class="btn-ghost" onclick="closeManualBlockModal()">Anuluj</button>
+        </div>
+    </div>
+</div>
+
+
+<!-- ================================================================
+     TOAST NOTIFICATION
+     ================================================================ -->
+<div id="toast" class="toast"></div>
+
+
+<!-- ================================================================
+     SCRIPTS — loaded in dependency order
+     ================================================================ -->
+<script src="db.js"></script>
+<script src="view-data.js"></script>
+<script src="view-public.js"></script>
+<script src="view-manager.js"></script>
+<script src="view-init.js"></script>
+
+</body>
+</html>
