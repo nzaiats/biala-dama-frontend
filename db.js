@@ -20,7 +20,7 @@ const DB = (() => {
                     window.location.hostname === '127.0.0.1';
     const API_BASE = isLocal
         ? ''                                              // lokalnie: same-origin
-        : 'https://biala-dama-api.onrender.com';          // ZMIEŃ na adres swojego backendu na Render
+        : 'https://biala-dama-backend.onrender.com';          // ZMIEŃ na adres swojego backendu na Render
     const API = API_BASE + '/api';
 
     // ── HTTP helpers ──────────────────────────────────────────────────────────
