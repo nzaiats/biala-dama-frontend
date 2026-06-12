@@ -1,27 +1,14 @@
 /**
  * db.js — Dworek Biała Dama
- * Frontend API client — replaces localStorage.
- * Every function returns a Promise. Use await in callers.
+ * Frontend API client — komunikacja REST z backendem na Render.com.
+ * Każda funkcja zwraca Promise. W wywołaniach używaj await.
  *
- * The server handles auth via session cookie (set-cookie on /api/login).
- * All subsequent fetch() calls send the cookie automatically (cross-origin with credentials).
- *
- * KONFIGURACJA: ustaw adres backendu w `API_BASE` poniżej.
- *   - Lokalnie:   pusty string ''  → użyje '/api' (same-origin)
- *   - Produkcja:  'https://twoj-backend.onrender.com'
+ * Serwer obsługuje autoryzację przez ciasteczko sesyjne (cross-origin).
  */
 
 const DB = (() => {
-    // ── KONFIGURACJA: adres backendu ─────────────────────────────────────────
-    // Automatyczne wykrywanie środowiska:
-    //   - localhost → backend lokalny pod tym samym adresem (/api)
-    //   - produkcja → backend na Render.com
-    const isLocal = window.location.hostname === 'localhost' ||
-                    window.location.hostname === '127.0.0.1';
-    const API_BASE = isLocal
-        ? ''                                              // lokalnie: same-origin
-        : 'https://biala-dama-backend.onrender.com';          // ZMIEŃ na adres swojego backendu na Render
-    const API = API_BASE + '/api';
+    // Adres backendu (Render.com)
+    const API = 'https://biala-dama-backend.onrender.com/api';
 
     // ── HTTP helpers ──────────────────────────────────────────────────────────
     async function _get(url) {
