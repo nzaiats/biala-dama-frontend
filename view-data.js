@@ -128,8 +128,8 @@ const ATTRACTIONS_DATA = [
 const HOTEL_PRICES = [
     { persons:'🧍', title:'Pokój Jednoosobowy', subtitle:'Dla 1 osoby', price:195, featured:false, includes:['Śniadanie w cenie','Parking gratis','Wi-Fi & TV'] },
     { persons:'👫', title:'Pokój Dwuosobowy',   subtitle:'Dla 2 osób',  price:265, featured:true,  includes:['Śniadanie dla 2 os.','Parking gratis','Wi-Fi & TV'] },
-    { persons:'👨‍👩‍👦', title:'Apartament',          subtitle:'Dla 3 osób',  price:345, featured:false, includes:['Śniadanie dla 3 os.','Parking gratis','Wi-Fi & TV','Taras prywatny'] },
-    { persons:'👨‍👩‍👧‍👦', title:'Apartament Rodzinny', subtitle:'Dla 4 osób',  price:395, featured:false, includes:['Śniadanie dla 4 os.','2 miejsca parkingowe','Wi-Fi & TV','Taras prywatny','Balkon'] },
+    { persons:'👨‍👩‍👦', title:'Apartament',          subtitle:'Dla 3 osób',  price:345, featured:false, includes:['Śniadanie dla 3 os.','Parking gratis','Wi-Fi & TV','Balkon'] },
+    { persons:'👨‍👩‍👧‍👦', title:'Apartament Rodzinny', subtitle:'Dla 4 osób',  price:395, featured:false, includes:['Śniadanie dla 4 os.','2 miejsca parkingowe','Wi-Fi & TV'] },
 ];
 
 
