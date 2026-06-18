@@ -125,6 +125,13 @@ const DB = (() => {
         } catch { return []; }
     }
 
+    // ── Public: zajętość stolików dla danej sali i daty (bez logowania) ──────
+    // Zwraca listę {tableNum, time, duration} - bez danych osobowych.
+    async function getBusyTables(hall, date) {
+        try { return await _get(`/reservations/busy/${hall}/${date}`); }
+        catch { return []; }
+    }
+
     // ── Floor layouts ─────────────────────────────────────────────────────────
     async function getLayout(hall) {
         try {
@@ -181,6 +188,7 @@ const DB = (() => {
         authenticate, logout,
         getUsers, addUser, changePassword,
         saveReservation, getReservations, updateStatus, getById, searchReservations,
+        getBusyTables,
         getLayout, saveLayout, resetLayout, clearLayout,
         getFloorElements, saveFloorElements,
         getTemplates, saveTemplate, loadTemplate,

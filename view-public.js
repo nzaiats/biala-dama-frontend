@@ -349,10 +349,9 @@ async function _busyTablesForSlot(hall, date, time, duration, excludeId) {
     const startMin = _timeToMinutes(time);
     const endMin   = startMin + Math.round((duration || 0) * 60);
     const busy = new Set();
-    const reservations = await DB.getReservations();
+    // Publiczny endpoint - działa bez logowania, zwraca tylko {tableNum, time, duration}
+    const reservations = await DB.getBusyTables(hall, date);
     reservations.forEach(r => {
-        if (r.hall !== hall || r.date !== date || r.status === 'cancelled') return;
-        if (excludeId && r.id === excludeId) return;
         const rStart = _timeToMinutes(r.time);
         const rEnd   = rStart + Math.round((r.duration || 2) * 60);
         if (startMin < rEnd && endMin > rStart) busy.add(r.tableNum);
