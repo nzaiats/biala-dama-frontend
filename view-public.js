@@ -1,16 +1,4 @@
-/**
- * view-public.js — Dworek Biała Dama
- * Public-facing UI logic:
- *   - Page navigation
- *   - Restaurant tabs, hall rendering, menu rendering
- *   - Reservation flow (steps 1-6)
- *   - Hotel page rendering
- *   - Okolica rendering
- *   - Toast notifications
- * Depends on: db.js, view-data.js
- */
 
-// === APP STATE
 // ============================================================
 
 const State = {

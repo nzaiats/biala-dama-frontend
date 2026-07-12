@@ -1,9 +1,4 @@
-/* ============================================================
-   style.css — Restauracja Leśna Polana
-   Glassmorphism + Warm Nature palette
-   ============================================================ */
 
-/* === CSS VARIABLES === */
 :root {
     --accent-color:     #C5A06F;   /* Muted Gold */
     --accent-dark:      #8b7355;   /* Dark Gold */
@@ -32,7 +27,7 @@
     --radius-xl:        24px;
 }
 
-/* === RESET === */
+
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
@@ -1103,7 +1098,7 @@ a { text-decoration: none; color: inherit; }
 .okolica-intro h2 { font-size: 2.6rem; margin-bottom: 18px; }
 .okolica-intro p { color: var(--text-light); line-height: 1.9; margin-bottom: 14px; }
 
-/* === MAPA OKOLICY — ramka ze zdjęciem Google Maps === */
+/* === MAPA OKOLICY - google photo === */
 .map-frame {
     position: relative;
     border-radius: var(--radius-md);
@@ -2311,7 +2306,7 @@ a { text-decoration: none; color: inherit; }
 }
 .fe-window i { font-size: 1rem; }
 
-/* Obstacle: hatched pattern */
+
 .fe-obstacle {
     background: repeating-linear-gradient(
         45deg,

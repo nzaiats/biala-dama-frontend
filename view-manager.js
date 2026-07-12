@@ -1,17 +1,5 @@
-/**
- * view-manager.js — Dworek Biała Dama
- * Manager panel logic:
- *   - Authentication (login / logout)
- *   - Dashboard panel switching
- *   - Reservation lists and status management
- *   - Statistics rendering
- *   - Layout editor with drag-and-drop (FIXED)
- *   - User management
- * Depends on: db.js, view-data.js
- */
 
-// === MANAGER AUTH
-// ============================================================
+// === MANAGER AUTH================================================
 
 const MgrAuth = { user: null, isLoggedIn() { return !!this.user; }, login(u){this.user=u;}, logout(){this.user=null;} };
 
@@ -95,12 +83,6 @@ async function refreshBadges() {
 // === RESERVATION TIME HELPERS
 // ============================================================
 
-/**
- * Returns true if the reservation has fully ended.
- * end_time = date + time + duration (hours)
- * Example: 2026-06-28, 13:00, 1.5h → ends at 14:30
- *          If now > 14:30 → expired
- */
 function _isExpired(r) {
     if (!r.date || !r.time) return false;
     const [h, m] = (r.time || '00:00').split(':').map(Number);
@@ -119,7 +101,7 @@ function _isOngoing(r) {
 }
 
 // ============================================================
-// === MANAGER MAP (read-only, with time filter input)
+// MANAGER MAP (read-only, with time filter input)
 // ============================================================
 
 let _mgrCurrentHall = 'kominkowa';
@@ -145,13 +127,12 @@ async function renderMgrMap(hall) {
         DB.getReservations()
     ]);
 
-    // Build statusMap: tableNum -> 'pending' | 'confirmed'
-    // Exclude expired reservations — their time slot has already passed
+
     const activeRes = allRes.filter(r =>
         r.hall === hall && r.date === filterDate &&
         r.status !== 'cancelled' && !_isExpired(r)
     );
-    // If time filter is on, narrow to overlapping slots
+ 
     const filtered = filterTime
         ? activeRes.filter(r => {
             const rStart = _timeToMinutes(r.time);
@@ -165,7 +146,7 @@ async function renderMgrMap(hall) {
     const statusMap = {};
     filtered.forEach(r => {
         const existing = statusMap[r.tableNum];
-        // confirmed/blocked always wins over pending
+      
         if (!existing || existing === 'pending') {
             statusMap[r.tableNum] = (r.status === 'pending') ? 'pending' : 'confirmed';
         }
@@ -174,7 +155,7 @@ async function renderMgrMap(hall) {
     const busySet = new Set(Object.keys(statusMap).map(Number));
     container.innerHTML = _buildMapHTML(tables, elements, busySet, 'manager', statusMap);
 
-    // Re-wire click-to-block so clicking a free table opens the manual block modal
+    
     container.removeEventListener('click', handleMgrMapClick);
     container.addEventListener('click', handleMgrMapClick);
 }
@@ -197,7 +178,7 @@ async function refreshMgrPanel(type) {
         containerId  = 'mgr-list-active';
 
     } else if (type === 'pending') {
-        // Pending reservations that have NOT yet ended
+     
         const all = await DB.getReservations({ status: 'pending' });
         reservations = all.filter(r => !_isExpired(r));
         containerId  = 'mgr-list-pending';
@@ -207,7 +188,7 @@ async function refreshMgrPanel(type) {
         containerId  = 'mgr-list-cancelled';
 
     } else if (type === 'history') {
-        // History = all expired (past) reservations + all cancelled
+        // History = all past reservations + all cancelled
         const q    = document.getElementById('hist-search')?.value  || '';
         const hall = document.getElementById('hist-filter-hall')?.value || '';
         const all  = await DB.searchReservations(q, hall);
@@ -304,7 +285,7 @@ document.addEventListener('click', e => { if (e.target.id==='res-detail-modal') 
 
 
 // ============================================================
-// === STATISTICS
+// STATISTICS
 // ============================================================
 
 async function renderMgrStats() {
@@ -348,19 +329,17 @@ async function renderMgrStats() {
 let _layoutHall     = 'kominkowa';
 let _layoutTables   = [];
 let _layoutElements = [];
-let _dragType       = 'table';   // 'table' | 'element'
-let _dragIdx        = null;      // array index of dragged item
-let _activeEl       = null;      // direct DOM reference to dragged element
+let _dragType       = 'table';   
+let _dragIdx        = null;      
+let _activeEl       = null;      
 let _dragOffX       = 0;
 let _dragOffY       = 0;
 let _selectedLayoutIdx = null;
-let _selectedElIdx     = null;   // selected floor-element index
+let _selectedElIdx     = null;   
 
 // ── Size helpers ───────────────────────────────────────────────────────────
-// Returns {w, h} CSS percentages based on seating capacity.
-// Smaller cap → square; larger cap → wider rectangle.
 function tableSize(cap) {
-    if (cap <= 2)  return { w: '12%', h: '13%' };   // 2-person: square-ish
+    if (cap <= 2)  return { w: '12%', h: '12%' };  
     if (cap <= 4)  return { w: '18%', h: '12%' };   // 4-person: rectangle
     if (cap <= 6)  return { w: '23%', h: '12%' };   // 6-person: longer
     if (cap <= 8)  return { w: '28%', h: '12%' };   // 8-person: long
@@ -426,19 +405,14 @@ function renderLayoutMap() {
     });
 
     container.innerHTML = html;
-    // NOTE: All interaction is handled by delegated listeners on the container
-    // (attached in _attachLayoutEditorListeners). No per-element listeners needed.
+    
 }
 
-// ── Event delegation ───────────────────────────────────────────────────────
-// Attach THREE listeners to the MAP CONTAINER (not to individual tables).
-// Because the container itself never gets replaced, these listeners survive
-// every call to renderLayoutMap() — fixing the "only first table moves" bug.
 function _attachLayoutEditorListeners() {
     const map = document.getElementById('layout-floor-map');
     if (!map) return;
 
-    // Remove previous instances to avoid duplicates when initLayoutEditor is called again
+    
     map.removeEventListener('mousedown',   _onLayoutMousedown);
     map.removeEventListener('contextmenu', _onLayoutContextmenu);
     map.removeEventListener('dblclick',    _onLayoutDblclick);
@@ -457,13 +431,13 @@ function _onLayoutMousedown(e) {
         e.preventDefault();
         const idx = parseInt(tblEl.dataset.tblIdx);
         if (isNaN(idx)) return;
-        // Highlight selection
+       
         _selectedLayoutIdx = idx;
         document.querySelectorAll('#layout-floor-map .mgr-table').forEach(el => {
             el.classList.remove('selected-layout');
         });
         tblEl.classList.add('selected-layout');
-        // Start drag — store direct DOM reference to avoid getElementById in mousemove
+
         _dragType = 'table';
         _dragIdx  = idx;
         _activeEl = tblEl;
@@ -476,7 +450,7 @@ function _onLayoutMousedown(e) {
         e.preventDefault();
         const idx = parseInt(fElEl.dataset.elIdx);
         if (isNaN(idx)) return;
-        // Podświetl wybrany element, odznacz pozostałe
+        
         _selectedElIdx = idx;
         document.querySelectorAll('#layout-floor-map .floor-element').forEach(el => {
             el.classList.remove('selected-el');
@@ -520,7 +494,7 @@ function _onLayoutDblclick(e) {
     }
 }
 
-// ── Document-level mousemove + mouseup (attached once in view-init.js) ──────
+//  mousemove + mouseup 
 function _initLayoutDragListeners() {
     document.addEventListener('mousemove', function(e) {
         if (_dragIdx === null || !_activeEl) return;
@@ -552,7 +526,7 @@ function _initLayoutDragListeners() {
     });
 }
 
-// ── Legacy stubs (kept so any stray calls don't throw) ──────────────────────
+
 function startDragTable() {}
 function startDragEl()    {}
 function onDragMove()     {}
@@ -566,7 +540,7 @@ function selectLayoutTable(idx) {
 
 
 
-// Rotate selected table (or prompt if none selected)
+// Rotate selected table 
 function rotateSelectedOrAll() {
     if (_selectedLayoutIdx !== null && _layoutTables[_selectedLayoutIdx]) {
         rotateLayoutTable(_selectedLayoutIdx);
@@ -575,7 +549,7 @@ function rotateSelectedOrAll() {
     }
 }
 
-// Rotate table: swap width ↔ height (toggle horizontal/vertical orientation)
+// Rotate table: swap width ↔ height 
 function rotateLayoutTable(idx) {
     const t = _layoutTables[idx];
     if (!t) return;
@@ -601,7 +575,7 @@ function addLayoutTable() {
     const cap  = parseInt(document.getElementById('new-table-cap')?.value) || 4;
     const nextN = _layoutTables.length ? Math.max(..._layoutTables.map(t => t.n)) + 1 : 1;
     const sz   = tableSize(cap);
-    // Stagger new tables so they don't all pile on top of each other
+
     const offset = (_layoutTables.length % 5) * 8;
     _layoutTables.push({ n: nextN, cap, l: (10 + offset) + '%', top: (15 + offset) + '%', w: sz.w, h: sz.h });
     renderLayoutMap();
@@ -642,7 +616,7 @@ function showSaveConfirmation(tplName) {
 }
 
 // ─── TEMPLATE SYSTEM ────────────────────────────────────────────────────────
-// 3 slots per hall: slot 0 = "Domyślny", slots 1-2 = custom
+
 
 let _currentTemplateSlot = 0;
 

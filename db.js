@@ -1,13 +1,5 @@
-/**
- * db.js — Dworek Biała Dama
- * Frontend API client — komunikacja REST z backendem na Render.com.
- * Każda funkcja zwraca Promise. W wywołaniach używaj await.
- *
- * Serwer obsługuje autoryzację przez ciasteczko sesyjne (cross-origin).
- */
-
 const DB = (() => {
-    // Adres backendu (Render.com)
+   
     const API = 'https://biala-dama-backend.onrender.com/api';
 
     // ── HTTP helpers ──────────────────────────────────────────────────────────
@@ -37,7 +29,7 @@ const DB = (() => {
         return r.json();
     }
 
-    // ── Default layouts (fallback when server returns empty) ──────────────────
+    // ── Default layouts ──────────────────
     const DEFAULT_LAYOUTS = {
         kominkowa: [
             {n:1, cap:2,l:'5%', top:'18%',w:'12%',h:'13%'},{n:2, cap:2,l:'21%',top:'18%',w:'12%',h:'13%'},

@@ -1,15 +1,4 @@
-/* ============================================================
-   style-manager.css — Dworek Biała Dama
-   Manager panel styles: login overlay, dashboard, tables,
-   layout editor, stats, modals, imprezy page
-   ============================================================ */
 
-/* ============================================================
-   style.css — Restauracja Leśna Polana
-   Glassmorphism + Warm Nature palette
-   ============================================================ */
-
-/* === CSS VARIABLES === */
 :root {
     --accent-color:     #C5A06F;   /* Muted Gold */
     --accent-dark:      #8b7355;   /* Dark Gold */
@@ -38,13 +27,13 @@
     --radius-xl:        24px;
 }
 
-/* === RESET === */
+
 
 /* ============================================================
-   MANAGER SYSTEM & IMPREZY — Additional Styles
+   MANAGER SYSTEM & IMPREZY 
    ============================================================ */
 
-/* === STAFF LOGIN BUTTON (footer, inconspicuous) === */
+/* === STAFF LOGIN BUTTON  === */
 .staff-login-btn {
     background: none;
     border: none;
@@ -973,15 +962,9 @@
 }
 @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
-/* ============================================================
-   MANUAL BLOCK MODAL — reuses .res-modal-overlay / .res-modal
-   ============================================================ */
-/* No extra CSS needed — inherits from existing res-modal styles */
 
 /* ============================================================
-   MANAGER MAP — floor-table status colors + NO hover animation
-   The manager map uses .floor-table (from _buildMapHTML) but
-   needs its own colors and must suppress all hover transforms.
+   MANAGER MAP 
    ============================================================ */
 
 /* Issue 1 fix: .floor-table.reserved needs a style
@@ -1009,8 +992,7 @@
     opacity: 1;
 }
 
-/* Issue 2 fix: remove ALL hover transform/scale from manager map tables.
-   The color glow (box-shadow above) already communicates status visually. */
+/* Issue 2 fix: remove ALL hover transform/scale from manager map tables. */
 .mgr-floor-map .floor-table {
     transition: none !important;
 }

@@ -1,15 +1,3 @@
-/**
- * view-data.js — Dworek Biała Dama
- * All static data constants:
- *   MENU_CATEGORIES, MENU_DATA, HALLS_DATA,
- *   ATTRACTIONS_DATA, HOTEL_PRICES
- * Must be loaded before view-public.js and view-manager.js.
- */
-
-/**
- * view.js — Dworek Biała Dama
- * Full UI logic: menu, reservation flow, manager panel, DB layer
- */
 
 // ============================================================
 // === RESTAURANT / MENU DATA
@@ -133,4 +121,3 @@ const HOTEL_PRICES = [
 ];
 
 
-// ============================================================
